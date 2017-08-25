@@ -1,0 +1,165 @@
+// add new Branch to IEscape addBranch(branchNumber, branchName, country, city, street, housNumber, phoneNumber)
+addBranch  11111111  QuestRoom       Israel  Afula	     Vizmam   3   054-5773662,052-8111888  
+addBranch  22222222  QuestWorld      Israel  Beit_Shemesh    Alonim   16  052-8222777,054-5554909 
+addBranch  33333333  EscapeLine      Israel  Hadera          Hashmal  5   052-8112111,054-5675656 
+addBranch  44444444  MindEscape      Israel  Kfar_Saba	     Nirim    20  052-8243444,054-5666776
+addBranch  55555555  TwistedMind     Israel  Sderot	     Haruvim  67  052-8771771,054-5998998 
+addBranch  66666666  PlaceboEscape   England London	     Lincoln  29  052-8999333,054-5121323 
+addBranch  77777777  JoyRun          USA     California	     Edinburg 23  052-8888888,054-5110011 
+addBranch  88888888  StepByStep      USA     Miami	     Ocean    11  052-8777777,054-5777477 
+addBranch  99999999  CrazyEscape     Spain   Madrid	     Syonar   13  052-8666666,054-5666666 
+addBranch  99999999  CrazyEscape     Spain   Madrid	     Syonar   13  052-8666666,054-5666666  
+addBranch  10101010  FastRoom        Israel  Yavne	     Dovrim   14  052-8101010,054-5222222 
+// ===============================================================================================================
+// add new Instructor to IEscape (employeeNumber, firstName, lastName, birthDate, startWorkingDate, password, level, types, address)____ Address(country, city, street, housNumber, phoneNumber)
+addInstructor 000001 Eyal   Haim    16/12/1984 01/01/2000 eyal1234   3  HORROR,HISTORICAL,MYSTERY    Israel  Afula        Vizman   7  053-667667
+addInstructor 000002 Yaron  Levi    10/05/1986 01/01/2000 yaron1234  2  FANTASY,SCI_FI,CARTOON,CRIME Israel  Beit_Shemesh Alonim   10 053-6565656
+addInstructor 000003 Gadi   Melamed 06/07/1984 01/01/2010 gadi1234   3  ADVENTURE,MYSTERY,SCI_FI     Israel  Hadera       Hashmal  1  052-8776111
+addInstructor 000004 Roy    Shefer  08/11/1982 01/01/2011 roy1234    3  CARTOON                      Israel  Kfar_Saba    Nirim    20 052-8909011
+addInstructor 000005 Shimon Danon   09/12/1983 01/01/2012 shimon1234 3  HORROR,HISTORICAL,MYSTERY    Israel  Sderot       Haruvim  56 052-8212333
+addInstructor 000006 Doron  Hen     01/10/1988 01/01/2012 doron1234  2  CARTOON,CRIME	             England London       Lincoln  23 052-8880880
+addInstructor 000007 Salah  Shabati 01/09/1988 01/01/2013 salah1234  2  ADVENTURE,CARTOON,CRIME	     USA     California   Edinburg 12 052-8616161
+addInstructor 000008 Dvora  Erez    10/09/1986 01/01/2007 dvora1234  1  SCI_FI,CARTOON,CRIME  	     USA     Miami        Ocean    43 052-8000911
+addInstructor 000009 Leon   Nahum   18/07/1985 01/01/2005 leon1234   2  FANTASY,SCI_FI,CARTOON	     Spain   Madrid       Syonar   77 052-8070707
+addInstructor 000009 Leon   Nahum   18/07/1985 01/01/2005 leon1234   2  FANTASY,SCI_FI,CARTOON	     Spain   Madrid       Syonar   77 052-8070707
+addInstructor 000010 Hoze   Soel    22/04/1987 01/01/2004 hoze1234   3  FANTASY,CARTOON,CRIME        Israel  Yavne        Dovrim   89 052-8020202
+// ===============================================================================================================
+// add new Receptionist to IEscape (employeeNumber, firstName, lastName, birthDate, startWorkingDate, password, address)____ Address(country, city, street, housNumber, phoneNumber)
+addReceptionist 000011 Yarden Haim    16/03/1984 01/01/2006 yard1234   Israel  Afula        Vizman   7  053-667667
+addReceptionist 000012 Daniel Levi    10/05/1986 01/01/2008 dani1234   Israel  Beit_Shemesh Alonim   10 053-6565656
+addReceptionist 000013 Mor    Melamed 06/07/1984 01/01/2010 mor1234    Israel  Hadera       Hashmal  1  052-8776111
+addReceptionist 000014 Rina   Shefer  08/11/1982 01/01/2011 rin1234    Israel  Kfar_Saba    Nirim    20 052-8909011
+addReceptionist 000014 Rina   Shefer  08/11/1982 01/01/2011 rin1234    Israel  Kfar_Saba    Nirim    20 052-8909011
+addReceptionist 000015 Rika   Danon   09/12/1983 01/01/2012 rika1234   Israel  Sderot       Haruvim  56 052-8212333
+addReceptionist 000016 Sivan  Hen     01/10/1988 01/01/2012 sivan1234  England London       Lincoln  23 052-8880880
+// ===============================================================================================================
+// add new customer to IEscape Customer(id, firstName, lastName, birthDate, password, level, email, address)____ Address(country, city, street, housNumber, phoneNumber)
+addCustomer 000099991  Gilad   Levi   01/01/1988 gilad234  BEGINNERS     hTTp:\\gilad@Gmail.com   Israel  Herzliya       Herzel 	  22 052-8090939
+addCustomer 000099992  Avi     Vizman 02/01/1990 avi234    INTERMEDIATE  hTTp:\\avi@Hotmail.co.il Israel  Holon 	 Herzel 	  22 052-8198765
+addCustomer 000099993  Dor     Kam    07/03/1979 dor234    INTERMEDIATE  hTTp:\\dor@Walla.co.il   Israel  Modiin_Illit   Gidon 	          22 052-8020003
+addCustomer 000099994  Shani   Iluz   05/05/1978 shani234  BEGINNERS     hTTp:\\shani@Walla.co.il Israel  Ofakim 	 Ezra             66 052-8200277
+addCustomer 000099995  Gabi    Avni   08/01/1978 gabi234   BEGINNERS     hTTp:\\gabi@Walla.co.il  Israel  Ramat_HaSharon Robert-Sold      11 052-8300200
+addCustomer 000099996  Lea     Arnon  09/11/1978 arnon234  BEGINNERS     hTTp:\\arnon@Walla.co.il Israel  Kiryat_Yam     Elisheva 	  66 052-8011011
+addCustomer 000099997  Elad    Hen    08/11/1976 elad234   BEGINNERS     hTTp:\\elad@Gmail.com    Israel  Nahariya       Agahaton 	  75 052-8030003
+addCustomer 000099998  Shai    Alush  09/11/1976 shai234   INTERMEDIATE  hTTp:\\shai@Gmail.com    Israel  Haifa          Moria 	          36 052-8108880
+addCustomer 000099999  Ben     Kim    10/11/1979 ben234    BEGINNERS     hTTp:\\ben@Gmail.com     Israel  Kafr_Qasim     Golan 	          71 052-8902229
+addCustomer 000099910  Talya   Amar   19/09/1983 talya234  BEGINNERS     hTTp:\\talya@Gmail.com   USA     California     Fifth-evn        60 052-8222044
+addCustomer 000099911  Viki    Shefer 18/09/1988 viki234   BEGINNERS     hTTp:\\viki@Gmail.com    Russian Moscow         Biana 	           4 052-8000555
+addCustomer 000099912  Natali  Hemo   15/11/1990 natali234 BEGINNERS     hTTp:\\natali@Gmail.com  Israel  Maale_Adumim   Herzel 	  29 052-8999100
+addCustomer 000099913  Shaked  Lev    14/02/1979 shaked234 INTERMEDIATE  hTTp:\\shaked@Gmail.com  Israel  Modiin_Illit   Gidon 	          49 052-8120444
+addCustomer 000099914  Dan     Himan  25/01/1978 dan234    BEGINNERS     hTTp:\\dan11@Gmail.com   Israel  Ofakim         Ezra  	          27 052-8772002
+addCustomer 000099915  Din     Gal    26/11/1978 din234    BEGINNERS     hTTp:\\din@Gmail.com     Israel  Ramat_HaSharon Robert-Sold      21 052-8511114
+addCustomer 000099915  Din     Gal    26/11/1978 din234    BEGINNERS     hTTp:\\din@Gmail.com     Israel  Ramat_HaSharon Robert-Sold      21 052-8511114
+addCustomer 000099916  Don     Roz    27/10/1978 don234    BEGINNERS     hTTp:\\don@Gmail.com     Israel  Kiryat_Yam     Elisheva 	  27 052-8300355
+addCustomer 000099917  Oshri   Mimon  28/04/1976 oshri234  ADVANCED      hTTp:\\oshri@Gmail.com   Israel  Nahariya       Agahaton 	  24 052-8100408
+addCustomer 000099918  Zvika   Ronen  22/06/1976 zvika234  ADVANCED      hTTp:\\zvika@Gmail.com   Israel  Haifa          Moria 	          61 052-8400250
+addCustomer 000099919  Yossi   Shabat 20/08/1979 yossi234  BEGINNERS     hTTp:\\yossi@Gmail.com   Israel  Kafr_Qasim     Golan 	          13 052-8131313
+addCustomer 000099920  Meira   Levi   24/09/1983 meira234  BEGINNERS     hTTp:\\meira@Gmail.com   USA     California     Fifth-evn        18 052-8455122
+addCustomer 00009911   Meir    Lev    14/02/1984 meir234   BEGINNERS     hTTp:\\meir@Gmail.com    Israel  Haifa          Moria            18 052-8455122
+addCustomer 000099916  Don     Roz    27/10/1978 don234    BEGINNERS     hTTp:\\don@Gmail.com     Israel  Kiryat_Yam     Elisheva 	  27 052-8300355
+// ===============================================================================================================
+// add new Subscription To an existing Customer(subNumber, custNumber, receptNumber, period, startDate)
+addSubToCustomer   000001   000099991 000011  MONTH    20/05/2017
+addSubToCustomer   000002   000099992 000016  YEAR     22/05/2017
+addSubToCustomer   000003   000099993 000014  YEAR     20/05/2017
+addSubToCustomer   000004   000099994 000016  HALF     19/05/2017
+addSubToCustomer   000006   000099994 000015  QUARTER  22/05/2017
+addSubToCustomer   000007   000099911 000013  HALF     22/05/2017
+addSubToCustomer   000008   000099912 000014  YEAR     22/05/2017
+addSubToCustomer   000009   000099913 000011  MONTH    22/05/2017
+addSubToCustomer   000010   000099911 000013  HALF     22/01/2017
+addSubToCustomer   000011   000099912 000013  YEAR     22/01/2017
+addSubToCustomer   000012   000099913 000011  MONTH    22/01/2017
+addSubToCustomer   000013   000099991 000015  QUARTER  01/05/2017
+addSubToCustomer   000014   000099992 000015  HALF     01/05/2017
+addSubToCustomer   000015   000099993 000015  YEAR     01/05/2017
+addSubToCustomer   000016   000099994 000015  MONTH    01/05/2017
+addSubToCustomer   000017   000099922 000014  YEAR     22/05/2017
+addSubToCustomer   000019   000099914 000015  QUARTER  22/05/2017
+// ===============================================================================================================
+// connectInstructorToBranch(instructorhNumber, branchNumber)
+connectInstructorToBranch 000001 11111111
+connectInstructorToBranch 000002 22222222
+connectInstructorToBranch 000003 33333333
+connectInstructorToBranch 000004 44444444
+connectInstructorToBranch 000005 55555555
+connectInstructorToBranch 000006 66666666
+connectInstructorToBranch 000007 77777777
+connectInstructorToBranch 000016 77777777
+connectInstructorToBranch 000008 88888888
+connectInstructorToBranch 000009 99999999
+connectInstructorToBranch 000010 10101010
+connectInstructorToBranch 000010 10101011
+// ===============================================================================================================
+// connectReceptionistToBranch(receptionistNumber, branchNumber)
+connectReceptionistToBranch  000011  11111111
+connectReceptionistToBranch  000012  22222222
+connectReceptionistToBranch  000014  44444444
+connectReceptionistToBranch  000016  66666666
+connectReceptionistToBranch  000019  99999999
+// ===============================================================================================================
+// changeCustomerAddress(customerId, country, city, street, housNumber, phoneNumber)
+changeCustomerAddress 000099991 Israel Arad   Nahum 88 052-8090939,054-5121323
+changeCustomerAddress 000099994 Israel Ofakim Ezra  2  052-8088977
+changeCustomerAddress 000099981 Israel Arad   Nahum 88 052-8090939
+changeCustomerAddress 000099998 Israel Haifa  Horev 3  052-8108880
+// ===============================================================================================================
+// addRoomToBranch  (roomNum, name, maxNumOfParticipants, minNumOfParticipants, timeLimit, level, roomType, branchNum)
+addRoomToBranch  00001 43_MainSt     6 4 60 BEGINNERS     HORROR      11111111
+addRoomToBranch  00002 Black&White   8 5 50 INTERMEDIATE  MYSTERY     11111111
+addRoomToBranch  00003 Portal_X      4 2 45 BEGINNERS     SCI_FI      11111111
+addRoomToBranch  00001 Enchanted     6 3 50 BEGINNERS     FANTASY     22222222
+addRoomToBranch  00002 Sherlock      9 5 60 INTERMEDIATE  CRIME       22222222
+addRoomToBranch  00001 Spongebob     7 3 50 ADVANCED      CARTOON     66666666
+addRoomToBranch  00001 Jurassic_park 5 3 45 BEGINNERS     ADVENTURE   66666666
+// ===============================================================================================================
+// addRoomRun (roomRunNum, dateTime, duration, instructorNum, branchNum, roomNum)
+addRoomRun 0000001  02/08/2017;12:00  30 000001  11111111  00003
+addRoomRun 0000002  03/08/2017;14:00  41 000001  11111111  00002
+addRoomRun 0000003  04/08/2017;12:00  52 000001  11111111  00002
+addRoomRun 0000004  05/08/2017;12:00  37 000001  11111111  00003
+addRoomRun 0000005  10/08/2017;12:00  40 000002  22222222  00002
+addRoomRun 0000006  02/08/2017;14:00  50 000002  22222222  00002
+addRoomRun 0000007  02/08/2017;14:00  53 000002  22222222  00002
+addRoomRun 0000010  08/08/2017;14:00  38 000001  11111111  00002
+addRoomRun 0000012  07/08/2017;14:00  31 000002  22222222  00002
+addRoomRun 0000013  06/08/2017;14:00  29 000001  11111111  00002
+// ===============================================================================================================
+// addCustomerToRoomRun  (custNumber, roomRunNum)
+addCustomerToRoomRun  000099991  0000005
+addCustomerToRoomRun  000099992  0000002
+addCustomerToRoomRun  000099992  0000001
+addCustomerToRoomRun  000099992  0000005
+addCustomerToRoomRun  000099993  0000003
+addCustomerToRoomRun  000099993  0000001
+addCustomerToRoomRun  000099993  0000002
+addCustomerToRoomRun  000099994  0000001
+addCustomerToRoomRun  000099991  0000004
+addCustomerToRoomRun  000099992  0000004
+addCustomerToRoomRun  000099993  0000004
+addCustomerToRoomRun  000099994  0000004
+addCustomerToRoomRun  000099995  0000002
+addCustomerToRoomRun  000099991  0000001
+addCustomerToRoomRun  000099992  0000009
+addCustomerToRoomRun  000099921  0000005
+// ===============================================================================================================
+// removeSubscription(subNumber)
+removeSubscription 000001
+removeSubscription 000002
+removeSubscription 000009
+removeSubscription 000020
+// ===============================================================================================================
+// getAllParticipatedRoomRunsOfMostActiveCustomer
+getAllParticipatedRoomRunsOfMostActiveCustomer
+// ===============================================================================================================
+// getTopJanuaryReceptionist
+getTopJanuaryReceptionist
+// ===============================================================================================================
+// getTheMostPopularRoomType
+getTheMostPopularRoomType
+// ===============================================================================================================
+// getAllSuperSeniorInstructors
+getAllSuperSeniorInstructors
+// ===============================================================================================================
+// getTheMostActiveDay
+getTheMostActiveDay

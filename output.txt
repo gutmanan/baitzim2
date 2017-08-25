@@ -1,0 +1,222 @@
+
+
+addBranch returns: Successfully added Branch 11111111 to SysData
+addBranch returns: Successfully added Branch 22222222 to SysData
+addBranch returns: Successfully added Branch 33333333 to SysData
+addBranch returns: Successfully added Branch 44444444 to SysData
+addBranch returns: Successfully added Branch 55555555 to SysData
+addBranch returns: Successfully added Branch 66666666 to SysData
+addBranch returns: Successfully added Branch 77777777 to SysData
+addBranch returns: Successfully added Branch 88888888 to SysData
+addBranch returns: Successfully added Branch 99999999 to SysData
+addBranch returns: Failed to add new Branch 99999999 to SysData
+addBranch returns: Successfully added Branch 10101010 to SysData
+
+
+
+
+addInstructor returns: Successfully added instructor 1 to SysData
+addInstructor returns: Successfully added instructor 2 to SysData
+addInstructor returns: Successfully added instructor 3 to SysData
+addInstructor returns: Successfully added instructor 4 to SysData
+addInstructor returns: Successfully added instructor 5 to SysData
+addInstructor returns: Successfully added instructor 6 to SysData
+addInstructor returns: Successfully added instructor 7 to SysData
+addInstructor returns: Successfully added instructor 8 to SysData
+addInstructor returns: Successfully added instructor 9 to SysData
+addInstructor returns: Failed to add new instructor 9 to SysData
+addInstructor returns: Successfully added instructor 10 to SysData
+
+
+
+
+addReceptionist returns: Successfully added receptionist 11 to SysData
+addReceptionist returns: Successfully added receptionist 12 to SysData
+addReceptionist returns: Successfully added receptionist 13 to SysData
+addReceptionist returns: Successfully added receptionist 14 to SysData
+addReceptionist returns: Failed to add new receptionist 14 to SysData
+addReceptionist returns: Successfully added receptionist 15 to SysData
+addReceptionist returns: Successfully added receptionist 16 to SysData
+
+
+
+
+addCustomer returns: Successfully added Customer with id 000099991 to SysData
+addCustomer returns: Successfully added Customer with id 000099992 to SysData
+addCustomer returns: Successfully added Customer with id 000099993 to SysData
+addCustomer returns: Successfully added Customer with id 000099994 to SysData
+addCustomer returns: Successfully added Customer with id 000099995 to SysData
+addCustomer returns: Successfully added Customer with id 000099996 to SysData
+addCustomer returns: Successfully added Customer with id 000099997 to SysData
+addCustomer returns: Successfully added Customer with id 000099998 to SysData
+addCustomer returns: Successfully added Customer with id 000099999 to SysData
+addCustomer returns: Successfully added Customer with id 000099910 to SysData
+addCustomer returns: Successfully added Customer with id 000099911 to SysData
+addCustomer returns: Successfully added Customer with id 000099912 to SysData
+addCustomer returns: Successfully added Customer with id 000099913 to SysData
+addCustomer returns: Successfully added Customer with id 000099914 to SysData
+addCustomer returns: Successfully added Customer with id 000099915 to SysData
+addCustomer returns: Failed to add new Customer with id 000099915 to SysData
+addCustomer returns: Successfully added Customer with id 000099916 to SysData
+addCustomer returns: Successfully added Customer with id 000099917 to SysData
+addCustomer returns: Successfully added Customer with id 000099918 to SysData
+addCustomer returns: Successfully added Customer with id 000099919 to SysData
+addCustomer returns: Successfully added Customer with id 000099920 to SysData
+addCustomer returns: Failed to add new Customer with id 00009911 to SysData
+addCustomer returns: Failed to add new Customer with id 000099916 to SysData
+
+
+
+
+addSubToCustomer returns: Successfully added subscription 1 to customer 000099991
+addSubToCustomer returns: Successfully added subscription 2 to customer 000099992
+addSubToCustomer returns: Successfully added subscription 3 to customer 000099993
+addSubToCustomer returns: Successfully added subscription 4 to customer 000099994
+addSubToCustomer returns: Successfully added subscription 6 to customer 000099994
+addSubToCustomer returns: Successfully added subscription 7 to customer 000099911
+addSubToCustomer returns: Successfully added subscription 8 to customer 000099912
+addSubToCustomer returns: Successfully added subscription 9 to customer 000099913
+addSubToCustomer returns: Successfully added subscription 10 to customer 000099911
+addSubToCustomer returns: Successfully added subscription 11 to customer 000099912
+addSubToCustomer returns: Successfully added subscription 12 to customer 000099913
+addSubToCustomer returns: Successfully added subscription 13 to customer 000099991
+addSubToCustomer returns: Successfully added subscription 14 to customer 000099992
+addSubToCustomer returns: Successfully added subscription 15 to customer 000099993
+addSubToCustomer returns: Successfully added subscription 16 to customer 000099994
+addSubToCustomer returns: Failed to add new subscription 17 to customer 000099922
+addSubToCustomer returns: Successfully added subscription 19 to customer 000099914
+
+
+
+
+connectInstructorToBranch returns: Successfully connected between instructor 1 and branch 11111111
+connectInstructorToBranch returns: Successfully connected between instructor 2 and branch 22222222
+connectInstructorToBranch returns: Successfully connected between instructor 3 and branch 33333333
+connectInstructorToBranch returns: Successfully connected between instructor 4 and branch 44444444
+connectInstructorToBranch returns: Successfully connected between instructor 5 and branch 55555555
+connectInstructorToBranch returns: Successfully connected between instructor 6 and branch 66666666
+connectInstructorToBranch returns: Successfully connected between instructor 7 and branch 77777777
+connectInstructorToBranch returns: Failed to connected between instructor 16 and branch 77777777
+connectInstructorToBranch returns: Successfully connected between instructor 8 and branch 88888888
+connectInstructorToBranch returns: Successfully connected between instructor 9 and branch 99999999
+connectInstructorToBranch returns: Successfully connected between instructor 10 and branch 10101010
+connectInstructorToBranch returns: Failed to connected between instructor 10 and branch 10101011
+
+
+
+
+connectReceptionistToBranch returns: Successfully connected between receptionist 11 and branch 11111111
+connectReceptionistToBranch returns: Successfully connected between receptionist 12 and branch 22222222
+connectReceptionistToBranch returns: Successfully connected between receptionist 14 and branch 44444444
+connectReceptionistToBranch returns: Successfully connected between receptionist 16 and branch 66666666
+connectReceptionistToBranch returns: Failed to connected between receptionist 19 and branch 99999999
+
+
+
+
+changeCustomerAddress returns: Successfully changed address of customer 000099991 Customer [ID Number=000099991, firstName=Gilad, lastName=Levi, birthDate=1/1/1988, password=gilad234, email=http:\\gilad@Gmail.com, customerAddress=Address [country=Israel, city=Arad, street=Nahum, housNumber=88, phoneNumber= {052-8090939,054-5121323} ]]
+changeCustomerAddress returns: Successfully changed address of customer 000099994 Customer [ID Number=000099994, firstName=Shani, lastName=Iluz, birthDate=5/5/1978, password=shani234, email=http:\\shani@Walla.co.il, customerAddress=Address [country=Israel, city=Ofakim, street=Ezra, housNumber=2, phoneNumber= {052-8088977} ]]
+changeCustomerAddress returns: Failed to change address of customer 000099981
+changeCustomerAddress returns: Successfully changed address of customer 000099998 Customer [ID Number=000099998, firstName=Shai, lastName=Alush, birthDate=9/11/1976, password=shai234, email=http:\\shai@Gmail.com, customerAddress=Address [country=Israel, city=Haifa, street=Horev, housNumber=3, phoneNumber= {052-8108880} ]]
+
+
+
+
+addRoomToBranch returns: Successfully added room 1 to branch 11111111
+addRoomToBranch returns: Successfully added room 2 to branch 11111111
+addRoomToBranch returns: Successfully added room 3 to branch 11111111
+addRoomToBranch returns: Successfully added room 1 to branch 22222222
+addRoomToBranch returns: Successfully added room 2 to branch 22222222
+addRoomToBranch returns: Successfully added room 1 to branch 66666666
+addRoomToBranch returns: Failed to add room 1 to branch 66666666
+
+
+
+
+addRoomRun returns: Successfully added RoomRun 1 at Wed Aug 02 12:00:00 IDT 2017 to room 3 in branch 11111111
+addRoomRun returns: Successfully added RoomRun 2 at Thu Aug 03 14:00:00 IDT 2017 to room 2 in branch 11111111
+addRoomRun returns: Successfully added RoomRun 3 at Fri Aug 04 12:00:00 IDT 2017 to room 2 in branch 11111111
+addRoomRun returns: Failed to add RoomRun 4 at Sat Aug 05 12:00:00 IDT 2017 to room 3 in branch 11111111
+addRoomRun returns: Successfully added RoomRun 5 at Thu Aug 10 12:00:00 IDT 2017 to room 2 in branch 22222222
+addRoomRun returns: Successfully added RoomRun 6 at Wed Aug 02 14:00:00 IDT 2017 to room 2 in branch 22222222
+addRoomRun returns: Failed to add RoomRun 7 at Wed Aug 02 14:00:00 IDT 2017 to room 2 in branch 22222222
+addRoomRun returns: Successfully added RoomRun 10 at Tue Aug 08 14:00:00 IDT 2017 to room 2 in branch 11111111
+addRoomRun returns: Successfully added RoomRun 12 at Mon Aug 07 14:00:00 IDT 2017 to room 2 in branch 22222222
+addRoomRun returns: Successfully added RoomRun 13 at Sun Aug 06 14:00:00 IDT 2017 to room 2 in branch 11111111
+
+
+
+
+addCustomerToRoomRun returns: Failed to add customer 000099991 to roomRun 5
+addCustomerToRoomRun returns: Successfully added customer 000099992 to roomRun 2
+addCustomerToRoomRun returns: Successfully added customer 000099992 to roomRun 1
+addCustomerToRoomRun returns: Successfully added customer 000099992 to roomRun 5
+addCustomerToRoomRun returns: Successfully added customer 000099993 to roomRun 3
+addCustomerToRoomRun returns: Successfully added customer 000099993 to roomRun 1
+addCustomerToRoomRun returns: Successfully added customer 000099993 to roomRun 2
+addCustomerToRoomRun returns: Successfully added customer 000099994 to roomRun 1
+addCustomerToRoomRun returns: Failed to add customer 000099991 to roomRun 4
+addCustomerToRoomRun returns: Failed to add customer 000099992 to roomRun 4
+addCustomerToRoomRun returns: Failed to add customer 000099993 to roomRun 4
+addCustomerToRoomRun returns: Failed to add customer 000099994 to roomRun 4
+addCustomerToRoomRun returns: Failed to add customer 000099995 to roomRun 2
+addCustomerToRoomRun returns: Failed to add customer 000099991 to roomRun 1
+addCustomerToRoomRun returns: Failed to add customer 000099992 to roomRun 9
+addCustomerToRoomRun returns: Failed to add customer 000099921 to roomRun 5
+
+
+
+
+removeSubscription returns: Successfully removed subscription 1
+removeSubscription returns: Successfully removed subscription 2
+removeSubscription returns: Successfully removed subscription 9
+removeSubscription returns: Failed to remove subscription 20
+
+
+
+
+=======
+Query_1
+=======
+getAllParticipatedRoomRunsOfMostActiveCustomer returns:
+the following roomRuns:
+1	- 3 on Fri Aug 04 12:00:00 IDT 2017
+2	- 1 on Wed Aug 02 12:00:00 IDT 2017
+3	- 2 on Thu Aug 03 14:00:00 IDT 2017
+
+
+
+
+=======
+Query_2
+=======
+getTopJanuaryReceptionist returns:
+the top january receptionist is: 13, Mor Melamed
+
+
+
+
+=======
+Query_3
+=======
+getTheMostPopularRoomType returns:
+the most popular room type is: MYSTERY
+
+
+
+
+=======
+Query_4
+=======
+getAllSuperSeniorInstructors returns:
+1	- 1, Eyal Haim
+2	- 2, Yaron Levi
+
+
+
+
+=======
+Query_5
+=======
+getTheMostActiveDay returns:
+the most active day is: Wed Aug 02 00:00:00 IDT 2017
