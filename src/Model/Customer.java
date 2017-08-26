@@ -6,8 +6,7 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
+
 import utils.Constants;
 import utils.E_Levels;
 
@@ -18,11 +17,12 @@ import utils.E_Levels;
  * @author University Of Haifa - Israel
  */
 public class Customer {
-	// -------------------------------Class Members------------------------------
+	// -------------------------------Class
+	// Members------------------------------
 	private String Id;
 	private String firstName;
 	private String lastName;
-	private Date birthdate; //Calendar can also be used here
+	private Date birthdate; // Calendar can also be used here
 	private String Password;
 	private E_Levels level;
 	private URL Email;
@@ -30,8 +30,8 @@ public class Customer {
 	private Address customerAddress;
 
 	// -------------------------------Constructors------------------------------
-	public Customer(String id, String firstName, String lastName, Date birthdate, String password,E_Levels level, URL email,
-			Subscription sub, Address customerAddress) {
+	public Customer(String id, String firstName, String lastName, Date birthdate, String password, E_Levels level,
+			URL email, Subscription sub, Address customerAddress) {
 		this.Id = checkId(id);
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -44,9 +44,9 @@ public class Customer {
 		addSubscription(sub);
 	}
 
-	public Customer(String id, String firstName, String lastName, Date birthdate, String password,E_Levels level, URL email,
-			Address customerAddress) {
-		this.Id = id;
+	public Customer(String id, String firstName, String lastName, Date birthdate, String password, E_Levels level,
+			URL email, Address customerAddress) {
+		this.Id = checkId(id);
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.birthdate = birthdate;
@@ -58,10 +58,11 @@ public class Customer {
 	}
 
 	public Customer(String id) {
-		this.Id = id;
+		this.Id = checkId(id);
 	}
 
-	// -------------------------------Getters And Setters------------------------------
+	// -------------------------------Getters And
+	// Setters------------------------------
 	public String getId() {
 		return Id;
 	}
@@ -139,27 +140,16 @@ public class Customer {
 	 * Helper method for Query 1: This method finds the number of participated
 	 * RoomRuns meaning PAST RoomRuns this customer participated in
 	 * 
-	 * @return participatedRoomRuns list if there are RoomRuns, empty list otherwise
+	 * @return participatedRoomRuns list if there are RoomRuns, empty list
+	 *         otherwise
 	 */
 	public List<RoomRun> getParticipatedRoomRuns() {
 		Date today = new Date();
 		List<RoomRun> participatedRoomRuns = new ArrayList<RoomRun>();
-		for (Map.Entry<Integer, Subscription> e1 : subs.entrySet()) {
-			//Integer k1 = e1.getKey();
-			Subscription v1 = e1.getValue();
-			if (v1 != null) {
-				for (Map.Entry<Integer, RoomRun> e2 : v1.getRoomRuns().entrySet()) {
-					//Integer k2 = e2.getKey();
-					RoomRun v2 = e2.getValue();
-					if (v2 != null && v2.getStartDateTime().before(today)) {
-						long minutesDiff = TimeUnit.MINUTES.convert(today.getTime() - v2.getStartDateTime().getTime(), TimeUnit.MILLISECONDS);
-						if (!(Math.abs(minutesDiff) < 120)) {
-							participatedRoomRuns.add(v2);
-						}
-					}
-				}
-			}
-		}
+		for (Subscription sub : subs.values())
+			for (RoomRun rr : sub.getRoomRuns().values())
+				if (!rr.getFinishDateTime().after(today))
+					participatedRoomRuns.add(rr);
 		return participatedRoomRuns.isEmpty() ? Collections.<RoomRun>emptyList() : participatedRoomRuns;
 	}
 
@@ -179,7 +169,7 @@ public class Customer {
 
 	/**
 	 * This method removes an existing subscription from the subs array IF the
-	 * sub exists, after deleting him from all related lessons.
+	 * sub exists.
 	 * 
 	 * @param sub
 	 * @return true if this sub was removed successfully or false otherwise
@@ -195,7 +185,7 @@ public class Customer {
 	}
 
 	/**
-	 * This method counts the number of the subscriptions that belongs to the
+	 * This method counts the number of valid subscriptions that belongs to the
 	 * customer.
 	 * 
 	 * @return customerSubs number of subscriptions
@@ -203,13 +193,9 @@ public class Customer {
 	public int getNumOfCustomerSubscriptions() {
 		Date today = new Date();
 		int customerSubs = 0;
-		for (Map.Entry<Integer, Subscription> e1 : subs.entrySet()) {
-			//Integer k1 = e1.getKey();
-			Subscription v1 = e1.getValue();
-			if (v1 != null && v1.getStartDate().before(today) && v1.getLastDay().after(today)) {
+		for (Subscription sub : subs.values())
+			if (sub.getStartDate().before(today) && sub.getLastDay().after(today))
 				customerSubs++;
-			}
-		}
 		return customerSubs;
 	}
 
@@ -222,17 +208,11 @@ public class Customer {
 	 */
 	public boolean addRoomRun(RoomRun roomRunToAdd) {
 		if (roomRunToAdd != null) {
-			for (Map.Entry<Integer, Subscription> e1 : subs.entrySet()) {
-				//Integer k1 = e1.getKey();
-				Subscription v1 = e1.getValue();
-				if (v1 != null && roomRunToAdd.getStartDateTime().after(v1.getStartDate()) && roomRunToAdd.getFinishDateTime().before(v1.getLastDay())) {
-					if (v1.getRoomRuns().containsKey(roomRunToAdd.getRoomRunNum())) {
-						continue;
-					}
-					v1.getRoomRuns().put(roomRunToAdd.getRoomRunNum(), roomRunToAdd);
-					return true;
+			for (Subscription sub : subs.values())
+				if (!roomRunToAdd.getStartDateTime().before(sub.getStartDate())
+						&& !roomRunToAdd.getFinishDateTime().after(sub.getLastDay())) {
+					return sub.addRoomRun(roomRunToAdd);
 				}
-			}
 		}
 		return false;
 	}
@@ -247,14 +227,9 @@ public class Customer {
 	 */
 	public boolean deleteRoomRun(RoomRun roomRunToDelete) {
 		if (roomRunToDelete != null) {
-			for (Map.Entry<Integer, Subscription> e1 : subs.entrySet()) {
-				//Integer k1 = e1.getKey();
-				Subscription v1 = e1.getValue();
-				if (v1 != null && v1.getRoomRuns().containsKey(roomRunToDelete.getRoomRunNum())) {
-					v1.getRoomRuns().remove(roomRunToDelete.getRoomRunNum());
-					return true;
-				}
-			}
+			for (Subscription sub : subs.values())
+				if (sub.getRoomRuns().containsKey(roomRunToDelete.getRoomRunNum()))
+					return sub.deleteRoomRun(roomRunToDelete);
 		}
 		return false;
 	}
@@ -276,7 +251,8 @@ public class Customer {
 		return "0";
 	}
 
-	// -------------------------------hashCode equals & toString------------------------------
+	// -------------------------------hashCode equals &
+	// toString------------------------------
 	@Override
 	public int hashCode() {
 		final int prime = 31;
