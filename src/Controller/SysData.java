@@ -345,7 +345,17 @@ public class SysData {
 					flag = true;
 				}
 				if (flag) {
+					for (RoomRun rr : room.getRoomRuns().values()) {
+						if (roomRun.getStartDateTime().before(rr.getStartDateTime()) && roomRun.getFinishDateTime().after(rr.getStartDateTime()))
+							return false;
+						if (roomRun.getStartDateTime().before(rr.getFinishDateTime()) && roomRun.getFinishDateTime().after(rr.getFinishDateTime()))
+							return false;
+						if (roomRun.getStartDateTime().equals(rr.getStartDateTime()))
+							return false;
+					}
 					roomRun = new RoomRun(roomRunNum, dateTime, duration, instructor, room);
+					if (roomRun.getInstructor() == null)
+						return false;
 					if (instructor.addRoomRun(roomRun)) {
 						if (room.addRoomRun(roomRun)) {
 							return roomRuns.add(roomRun);
