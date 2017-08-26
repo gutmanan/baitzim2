@@ -5,6 +5,7 @@ public class Hint {
 	private int hintNum;
 	private String text;
 	private Room belongRoom;
+	
 	// -------------------------------Constructors------------------------------
 	public Hint(int hintNum, String text, Room belongRoom) {
 		this.hintNum = hintNum;
@@ -13,10 +14,10 @@ public class Hint {
 	}
 	
 	public Hint(int hintNum, Room belongRoom) {
-		super();
 		this.hintNum = hintNum;
 		this.belongRoom = belongRoom;
 	}
+	
 	// -------------------------------Getters And Setters------------------------------
 	public int getHintNum() {
 		return hintNum;
@@ -41,6 +42,7 @@ public class Hint {
 	public void setBelongRoom(Room belongRoom) {
 		this.belongRoom = belongRoom;
 	}
+	
 	// -------------------------------More Methods------------------------------
 	// -------------------------------hashCode equals & toString------------------------------
 	@Override
