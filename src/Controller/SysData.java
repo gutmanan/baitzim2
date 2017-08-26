@@ -10,6 +10,7 @@ import java.util.Map;
 import Model.Address;
 import Model.Branch;
 import Model.Customer;
+import Model.Hint;
 import Model.Instructor;
 import Model.Receptionist;
 import Model.Room;
@@ -17,6 +18,7 @@ import Model.RoomRun;
 import Model.Subscription;
 import utils.Constants;
 import utils.E_Cities;
+import utils.E_Equipment;
 import utils.E_Levels;
 import utils.E_Periods;
 import utils.E_Rooms;
@@ -28,7 +30,8 @@ import utils.E_Rooms;
  * @author University Of Haifa - Israel
  */
 public class SysData {
-	// -------------------------------Class Members------------------------------
+	// -------------------------------Class
+	// Members------------------------------
 	private ArrayList<Instructor> instructors;
 	private ArrayList<Receptionist> receptionists;
 	private ArrayList<Branch> branches;
@@ -157,17 +160,14 @@ public class SysData {
 		// Check validity first
 		if (id != null && firstName != null && lastName != null && birthDate != null && password != null
 				&& level != null && email != null && customerAddress != null) {
-			if (id.length() == Constants.ID_NUMBER_SIZE) {
-				for (int i = 0; i < id.length(); i++)
-					if (!Character.isDigit(id.charAt(i))) {
-						return false;
-					}
-				// Creating a new customer with his full constructor
-				Customer customer = new Customer(id, firstName, lastName, birthDate, password, level, email,
-						customerAddress);
-				if (!customers.contains(customer)) {
-					return customers.add(customer); // Add this customer;
-				}
+			// Creating a new customer with his full constructor
+			Customer customer = new Customer(id, firstName, lastName, birthDate, password, level, email,
+					customerAddress);
+			// Check if ID equals to "0" - incorrect ID
+			if (customer.getId().equals("0"))
+				return false;
+			if (!customers.contains(customer)) {
+				return customers.add(customer); // Add this customer;
 			}
 		}
 		return false;
@@ -191,20 +191,15 @@ public class SysData {
 			Receptionist receptionist = new Receptionist(receptNumber);
 			if (customers.contains(customer) && receptionists.contains(receptionist)) {
 				// Get the customer
-				for (Customer c : customers) {
-					if (c != null && customer.equals(c))
-						customer = customers.get(customers.indexOf(c));
-				}
+				customer = customers.get(customers.indexOf(customer));
 				// Get the receptionist
-				for (Receptionist r : receptionists) {
-					if (r != null && receptionist.equals(r))
-						receptionist = receptionists.get(receptionists.indexOf(r));
-				}
+				receptionist = receptionists.get(receptionists.indexOf(receptionist));
+				if (receptionist.getWorkBranch() == null)
+					return false;
 				Subscription subscription = new Subscription(subNumber, customer, receptionist, period, startDate);
 				if (customer.addSubscription(subscription)) {
-					if (receptionist.addSubscription(subscription)) {
+					if (receptionist.addSubscription(subscription))
 						return true;
-					}
 					customer.removeSubscription(subscription);
 				}
 			}
@@ -227,15 +222,9 @@ public class SysData {
 			Branch branch = new Branch(branchNumber);
 			if (instructors.contains(instructor) && branches.contains(branch)) {
 				// Get the branch
-				for (Branch br : branches) {
-					if (br != null && branch.equals(br))
-						branch = branches.get(branches.indexOf(br));
-				}
+				branch = branches.get(branches.indexOf(branch));
 				// Get the instructor
-				for (Instructor i : instructors) {
-					if (i != null && instructor.equals(i))
-						instructor = instructors.get(instructors.indexOf(i));
-				}
+				instructor = instructors.get(instructors.indexOf(instructor));
 				if (branch.addInstructor(instructor)) {
 					instructor.setWorkBranch(branch);
 					return true;
@@ -260,15 +249,9 @@ public class SysData {
 			Branch branch = new Branch(branchNumber);
 			if (receptionists.contains(receptionist) && branches.contains(branch)) {
 				// Get the branch
-				for (Branch br : branches) {
-					if (br != null && branch.equals(br))
-						branch = branches.get(branches.indexOf(br));
-				}
+				branch = branches.get(branches.indexOf(branch));
 				// Get the receptionist
-				for (Receptionist r : receptionists) {
-					if (r != null && receptionist.equals(r))
-						receptionist = receptionists.get(receptionists.indexOf(r));
-				}
+				receptionist = receptionists.get(receptionists.indexOf(receptionist));
 				if (branch.addReceptionist(receptionist)) {
 					receptionist.setWorkBranch(branch);
 					return true;
@@ -294,10 +277,7 @@ public class SysData {
 			Branch branch = new Branch(branchNum);
 			if (branches.contains(branch)) {
 				// Get the branch
-				for (Branch br : branches) {
-					if (br != null && branch.equals(br))
-						branch = branches.get(branches.indexOf(br));
-				}
+				branch = branches.get(branches.indexOf(branch));
 				Room room = new Room(roomNum, name, maxNumOfParticipants, minNumOfParticipants, timeLinit, level,
 						roomType, branch);
 				return branch.addRoom(room);
@@ -305,6 +285,29 @@ public class SysData {
 		}
 		return false;
 	}// ~ END OF addRoomToBranch
+	
+	/**
+	 * This method adds a hint to a room IF the branch & room already exist
+	 * @param branchNum
+	 * @param roomNum
+	 * @param hintNum
+	 * @param text
+	 * @return true if the hint was added to the room, false otherwise
+	 */
+	public boolean addHintToRoom(int branchNum, int roomNum, int hintNum, String text) {
+		if (branchNum > 0 && roomNum > 0 && hintNum > 0 && text != null) {
+			Branch br = new Branch(branchNum);
+			if (!branches.contains(br))
+				return false;
+			br = branches.get(branches.indexOf(br));
+			if (!br.getRooms().containsKey(roomNum))
+				return false;
+			Room r = br.getRooms().get(roomNum);
+			Hint hint = new Hint(hintNum, text, r);
+			return r.addHint(hint);
+		}
+		return false;
+	}
 
 	/**
 	 * This method add a new roomRun to SysData Hint- think of all the things
@@ -329,15 +332,9 @@ public class SysData {
 			Room room = new Room(roomNum);
 			if (branches.contains(branch) && instructors.contains(instructor) && !roomRuns.contains(roomRun)) {
 				// Get the branch
-				for (Branch br : branches) {
-					if (br != null && branch.equals(br))
-						branch = branches.get(branches.indexOf(br));
-				}
+				branch = branches.get(branches.indexOf(branch));
 				// Get the instructor
-				for (Instructor i : instructors) {
-					if (i != null && instructor.equals(i))
-						instructor = instructors.get(instructors.indexOf(i));
-				}
+				instructor = instructors.get(instructors.indexOf(instructor));
 				// Get the room
 				boolean flag = false;
 				if (branch.getRooms().containsKey(room.getRoomNum())) {
@@ -345,15 +342,17 @@ public class SysData {
 					flag = true;
 				}
 				if (flag) {
+					roomRun = new RoomRun(roomRunNum, dateTime, duration, instructor, room);
 					for (RoomRun rr : room.getRoomRuns().values()) {
-						if (roomRun.getStartDateTime().before(rr.getStartDateTime()) && roomRun.getFinishDateTime().after(rr.getStartDateTime()))
+						if (roomRun.getStartDateTime().before(rr.getStartDateTime())
+								&& roomRun.getFinishDateTime().after(rr.getStartDateTime()))
 							return false;
-						if (roomRun.getStartDateTime().before(rr.getFinishDateTime()) && roomRun.getFinishDateTime().after(rr.getFinishDateTime()))
+						if (roomRun.getStartDateTime().before(rr.getFinishDateTime())
+								&& roomRun.getFinishDateTime().after(rr.getFinishDateTime()))
 							return false;
 						if (roomRun.getStartDateTime().equals(rr.getStartDateTime()))
 							return false;
 					}
-					roomRun = new RoomRun(roomRunNum, dateTime, duration, instructor, room);
 					if (roomRun.getInstructor() == null)
 						return false;
 					if (instructor.addRoomRun(roomRun)) {
@@ -368,6 +367,43 @@ public class SysData {
 		return false;
 	}
 
+	/**
+	 * This method adds an equipment to a specific roomRun if this equipment
+	 * is suitable for this room type.
+	 * @param roomRunNum
+	 * @param equipment
+	 * @return true if an equipment was added, false otherwise
+	 */
+	public boolean addEquipmentToRoomRun(int roomRunNum, E_Equipment equipment) {
+		if (roomRunNum > 0 && equipment != null) {
+			RoomRun rr = new RoomRun(roomRunNum);
+			if (!roomRuns.contains(rr))
+				return false;
+			rr = roomRuns.get(roomRuns.indexOf(rr));
+			if (equipment.getRoomTypes().contains(rr.getRoom().getRoomType()))
+				return rr.addEquipment(equipment);
+		}
+		return false;
+	}
+	
+	/**
+	 * This method removes an equipment from a specific roomRun.
+	 * @param roomRunNum
+	 * @param equipment
+	 * @return true if succeeded, false otherwise
+	 */
+	public boolean removeEquipmentFromRoomRun(int roomRunNum, E_Equipment equipment) {
+		if (roomRunNum > 0 && equipment != null) {
+			RoomRun rr = new RoomRun(roomRunNum);
+			if (!roomRuns.contains(rr))
+				return false;
+			rr = roomRuns.get(roomRuns.indexOf(rr));
+			if (equipment.getRoomTypes().contains(rr.getRoom().getRoomType()))
+				return rr.removeEquipment(equipment);
+		}
+		return false;
+	}
+	
 	/**
 	 * This method adds a customer to a specific roomRun if his subscription
 	 * fits, he has no other roomRuns at the time, and there is a free space in
@@ -385,22 +421,36 @@ public class SysData {
 			RoomRun roomRun = new RoomRun(roomRunNum);
 			if (customers.contains(customer) && roomRuns.contains(roomRun)) {
 				// Get the customer
-				for (Customer c : customers) {
-					if (c != null && customer.equals(c))
-						customer = customers.get(customers.indexOf(c));
-				}
+				customer = customers.get(customers.indexOf(customer));
 				// Get the roomRun
-				for (RoomRun l : roomRuns) {
-					if (l != null && roomRun.equals(l))
-						roomRun = roomRuns.get(roomRuns.indexOf(l));
-				}
+				roomRun = roomRuns.get(roomRuns.indexOf(roomRun));
 				if (customer.addRoomRun(roomRun)) {
-					if (roomRun.addParticipant(customer)) {
+					if (roomRun.addParticipant(customer))
 						return true;
-					}
 					customer.deleteRoomRun(roomRun);
 				}
 			}
+		}
+		return false;
+	}
+	
+	/**
+	 * Gives a hint to specific roomRun
+	 * @param roomRunNum
+	 * @param hintNum
+	 * @return true if succeeded, false otherwise
+	 */
+	public boolean giveAHint(int roomRunNum, int hintNum) {
+		if (roomRunNum > 0 && hintNum > 0) {
+			RoomRun rr = new RoomRun(roomRunNum);
+			if (!roomRuns.contains(rr))
+				return false;
+			rr = roomRuns.get(roomRuns.indexOf(rr));
+			Hint hint = new Hint(hintNum, rr.getRoom());
+			if (!rr.getRoom().getHints().contains(hint))
+				return false;
+			hint = rr.getRoom().getHints().get(rr.getRoom().getHints().indexOf(hint));
+			return rr.addHint(hint);
 		}
 		return false;
 	}
@@ -424,10 +474,7 @@ public class SysData {
 				&& houseNumber > 0 && phonenumbers != null) {
 			Customer customer = new Customer(id);
 			if (customers.contains(customer)) {
-				for (Customer c : customers) {
-					if (c != null && customer.equals(c))
-						customer = customers.get(customers.indexOf(c));
-				}
+				customer = customers.get(customers.indexOf(customer));
 				customer.setCustomerAddress(new Address(country, city, street, houseNumber, phonenumbers));
 				return true;
 			}
@@ -437,8 +484,7 @@ public class SysData {
 
 	/**
 	 * This method cancels a subscription from the system using the subNumber
-	 * (Primary Key). The subscription will be canceled IFF all related objects
-	 * will delete from SysData
+	 * (Primary Key).
 	 * 
 	 * @param subNumber
 	 * @return true if subscription was canceled, false otherwise
@@ -447,37 +493,23 @@ public class SysData {
 		// Check validity first
 		if (subNumber > 0) {
 			Subscription subscription = new Subscription(subNumber);
-			for (Customer c : customers) {
-				if (c != null) {
-					for (int i = 0; i < c.getSubs().length; i++) {
-						if (c.getSubs()[i] != null) {
-							if (c.getSubs()[i] == subscription) {
-								subscription = c.getSubs()[i];
-							}
-						}
-					}
-				}
-				if (subscription == null) {
-					return false;
-				}
-				if (c.removeSubscription(subscription)) {
-					return true;
-				}
-			}
+			for (Customer c : customers)
+				if (c.getSubs().containsKey(subscription.getNumber()))
+					return c.removeSubscription(subscription);
 		}
 		return false;
 	}// ~ END OF removeSubscription
-	// -------------------------------Queries------------------------------
-	// ===================================================
-	// HW_1_Queries
-	// ===================================================
+		// -------------------------------Queries------------------------------
+		// ===================================================
+		// HW_1_Queries
+		// ===================================================
 
 	/**
 	 * This method returns all roomRuns of the most active customer. Most active
 	 * customer is the customer with the most PARTICIPATED roomRuns A roomRuns
 	 * will be counted as participated if its date has past already
 	 * 
-	 * @return participatedRoomRuns if found, empty list otherwise 
+	 * @return participatedRoomRuns if found, empty list otherwise
 	 */
 	public List<RoomRun> getAllParticipatedRoomRunsOfMostActiveCustomer() {
 		int numberOfRoomRuns = 0;
@@ -508,6 +540,7 @@ public class SysData {
 		}
 		return topJanuaryReceptionist;
 	} // ~END OF getTopJanuaryReceptionist
+
 	/**
 	 * This query returns the most popular room type. Most popular room type is
 	 * the type with the highest number of registered roomRuns.
@@ -529,19 +562,18 @@ public class SysData {
 		for (Map.Entry<E_Rooms, Integer> entry : types.entrySet()) {
 			E_Rooms key = entry.getKey();
 			Integer value = entry.getValue();
-		    if (value > max) {
+			if (value > max) {
 				max = value;
 				toReturn = key;
 			}
 		}
 		return toReturn;
 	} // ~END OF getTheMostPopularRoomType
-	
 
 	/**
-	 * This method finds all of the super senior instructors of this month. An instructor
-	 * is considered a super senior instructor if he started working over 15 years
-	 * ago and guided at least 2 roomRuns this month
+	 * This method finds all of the super senior instructors of this month. An
+	 * instructor is considered a super senior instructor if he started working
+	 * over 15 years ago and guided at least 2 roomRuns this month
 	 * 
 	 * @return an array of super senior instructors if found, null otherwise
 	 */
@@ -552,20 +584,18 @@ public class SysData {
 		ArrayList<Instructor> superSenior = new ArrayList<Instructor>();
 		for (Instructor i : instructors) {
 			roomRunsThisMonth = 0;
-			if (i != null) {
-				for (RoomRun rr : i.getRoomRuns()) {
-					if (rr != null && rr.getStartDateTime().getMonth() == today.getMonth()) {
-						roomRunsThisMonth++;
-					}
-				}
-				if (i.getEmployeeSeniority() > 15 && roomRunsThisMonth > 1) {
-					superSenior.add(i);
-				}
+			for (RoomRun rr : i.getRoomRuns().values())
+				if (rr.getStartDateTime().getMonth() == today.getMonth()
+						&& rr.getStartDateTime().getYear() == today.getYear())
+					roomRunsThisMonth++;
+			if (i.getEmployeeSeniority() > 15 && roomRunsThisMonth > 1) {
+				superSenior.add(i);
 			}
+
 		}
 		return superSenior.toArray(new Instructor[superSenior.size()]);
 	} // ~END OF getAllSuperSeniorInstructors
-	
+
 	@SuppressWarnings("deprecation")
 	public Date getTheMostActiveDay() {
 		HashMap<Date, Integer> dates = new HashMap<>();
@@ -573,22 +603,30 @@ public class SysData {
 		Date mostActive = null;
 		Date onlyDate = null;
 		for (RoomRun rr : roomRuns) {
-			if (rr != null) {
-				onlyDate = new Date(rr.getStartDateTime().getYear(), rr.getStartDateTime().getMonth(), rr.getStartDateTime().getDate());
-				if (dates.containsKey(onlyDate)) {
-					dates.put(onlyDate, dates.get(onlyDate) + 1);
-				} else
-					dates.put(onlyDate, new Integer(1));
-			}
+			onlyDate = new Date(rr.getStartDateTime().getYear(), rr.getStartDateTime().getMonth(),
+					rr.getStartDateTime().getDate());
+			if (dates.containsKey(onlyDate)) {
+				dates.put(onlyDate, dates.get(onlyDate) + 1);
+			} else
+				dates.put(onlyDate, new Integer(1));
+
 		}
 		for (Map.Entry<Date, Integer> entry : dates.entrySet()) {
 			Date key = entry.getKey();
 			Integer value = entry.getValue();
-		    if (value > max) {
+			if (value > max) {
 				max = value;
 				mostActive = key;
 			}
 		}
 		return mostActive;
 	} /// ~END OF getTheMostActiveDay
+	
+	public ArrayList<RoomRun> getAllRoomRunsWithoutHints() {
+		ArrayList<RoomRun> toReturn = new ArrayList<>();
+		for (RoomRun rr : roomRuns)
+			if (rr.getTakenHints().isEmpty())
+				toReturn.add(rr);
+		return toReturn;
+	}
 }// ~ END OF Class SysData

@@ -58,25 +58,6 @@ addCustomer 000099920  Meira   Levi   24/09/1983 meira234  BEGINNERS     hTTp:\\
 addCustomer 00009911   Meir    Lev    14/02/1984 meir234   BEGINNERS     hTTp:\\meir@Gmail.com    Israel  Haifa          Moria            18 052-8455122
 addCustomer 000099916  Don     Roz    27/10/1978 don234    BEGINNERS     hTTp:\\don@Gmail.com     Israel  Kiryat_Yam     Elisheva 	  27 052-8300355
 // ===============================================================================================================
-// add new Subscription To an existing Customer(subNumber, custNumber, receptNumber, period, startDate)
-addSubToCustomer   000001   000099991 000011  MONTH    20/05/2017
-addSubToCustomer   000002   000099992 000016  YEAR     22/05/2017
-addSubToCustomer   000003   000099993 000014  YEAR     20/05/2017
-addSubToCustomer   000004   000099994 000016  HALF     19/05/2017
-addSubToCustomer   000006   000099994 000015  QUARTER  22/05/2017
-addSubToCustomer   000007   000099911 000013  HALF     22/05/2017
-addSubToCustomer   000008   000099912 000014  YEAR     22/05/2017
-addSubToCustomer   000009   000099913 000011  MONTH    22/05/2017
-addSubToCustomer   000010   000099911 000013  HALF     22/01/2017
-addSubToCustomer   000011   000099912 000013  YEAR     22/01/2017
-addSubToCustomer   000012   000099913 000011  MONTH    22/01/2017
-addSubToCustomer   000013   000099991 000015  QUARTER  01/05/2017
-addSubToCustomer   000014   000099992 000015  HALF     01/05/2017
-addSubToCustomer   000015   000099993 000015  YEAR     01/05/2017
-addSubToCustomer   000016   000099994 000015  MONTH    01/05/2017
-addSubToCustomer   000017   000099922 000014  YEAR     22/05/2017
-addSubToCustomer   000019   000099914 000015  QUARTER  22/05/2017
-// ===============================================================================================================
 // connectInstructorToBranch(instructorhNumber, branchNumber)
 connectInstructorToBranch 000001 11111111
 connectInstructorToBranch 000002 22222222
@@ -98,6 +79,25 @@ connectReceptionistToBranch  000014  44444444
 connectReceptionistToBranch  000016  66666666
 connectReceptionistToBranch  000019  99999999
 // ===============================================================================================================
+// add new Subscription To an existing Customer(subNumber, custNumber, receptNumber, period, startDate)
+addSubToCustomer   000001   000099991 000011  MONTH    20/05/2017
+addSubToCustomer   000002   000099992 000016  YEAR     22/05/2017
+addSubToCustomer   000003   000099993 000014  YEAR     20/05/2017
+addSubToCustomer   000004   000099994 000016  HALF     19/05/2017
+addSubToCustomer   000006   000099994 000015  QUARTER  22/05/2017
+addSubToCustomer   000007   000099911 000013  HALF     22/05/2017
+addSubToCustomer   000008   000099912 000014  YEAR     22/05/2017
+addSubToCustomer   000009   000099913 000011  MONTH    22/05/2017
+addSubToCustomer   000010   000099911 000013  HALF     22/01/2017
+addSubToCustomer   000011   000099912 000013  YEAR     22/01/2017
+addSubToCustomer   000012   000099913 000011  MONTH    22/01/2017
+addSubToCustomer   000013   000099991 000015  QUARTER  01/05/2017
+addSubToCustomer   000014   000099992 000015  HALF     01/05/2017
+addSubToCustomer   000015   000099993 000015  YEAR     01/05/2017
+addSubToCustomer   000016   000099994 000015  MONTH    01/05/2017
+addSubToCustomer   000017   000099922 000014  YEAR     22/05/2017
+addSubToCustomer   000019   000099914 000015  QUARTER  22/05/2017
+// ===============================================================================================================
 // changeCustomerAddress(customerId, country, city, street, housNumber, phoneNumber)
 changeCustomerAddress 000099991 Israel Arad   Nahum 88 052-8090939,054-5121323
 changeCustomerAddress 000099994 Israel Ofakim Ezra  2  052-8088977
@@ -113,6 +113,15 @@ addRoomToBranch  00002 Sherlock      9 5 60 INTERMEDIATE  CRIME       22222222
 addRoomToBranch  00001 Spongebob     7 3 50 ADVANCED      CARTOON     66666666
 addRoomToBranch  00001 Jurassic_park 5 3 45 BEGINNERS     ADVENTURE   66666666
 // ===============================================================================================================
+// addHintToRoom  (branchNum, roomNum, hintNum, text)
+addHintToRoom	11111111	00002	0001	Some-hint-for-room-1-in-branch-1
+addHintToRoom	11111111	00002	0001	Some-hint-for-room-1-in-branch-1
+addHintToRoom	11111111	00002	0002	Some-hint-for-room-1-in-branch-1
+addHintToRoom	11111111	00002	0003	Some-hint-for-room-1-in-branch-1
+addHintToRoom	11111111	00003	0001	Some-hint-for-room-2-in-branch-1
+addHintToRoom	11111111	00003	0001	Some-hint-for-room-3-in-branch-1
+addHintToRoom	22222222	00002	0001	Some-hint-for-room-1-in-branch-2
+// ===============================================================================================================
 // addRoomRun (roomRunNum, dateTime, duration, instructorNum, branchNum, roomNum)
 addRoomRun 0000001  02/08/2017;12:00  30 000001  11111111  00003
 addRoomRun 0000002  03/08/2017;14:00  41 000001  11111111  00002
@@ -124,6 +133,13 @@ addRoomRun 0000007  02/08/2017;14:00  53 000002  22222222  00002
 addRoomRun 0000010  08/08/2017;14:00  38 000001  11111111  00002
 addRoomRun 0000012  07/08/2017;14:00  31 000002  22222222  00002
 addRoomRun 0000013  06/08/2017;14:00  29 000001  11111111  00002
+// ===============================================================================================================
+// addEquipmentToRoomRun  (roomRunNum, equipment)
+addEquipmentToRoomRun	0000002	Pistol
+addEquipmentToRoomRun	0000002	Pistol
+addEquipmentToRoomRun	0000003	Map
+addEquipmentToRoomRun	0000004	Compass
+addEquipmentToRoomRun	0000005	Gun
 // ===============================================================================================================
 // addCustomerToRoomRun  (custNumber, roomRunNum)
 addCustomerToRoomRun  000099991  0000005
@@ -143,11 +159,23 @@ addCustomerToRoomRun  000099991  0000001
 addCustomerToRoomRun  000099992  0000009
 addCustomerToRoomRun  000099921  0000005
 // ===============================================================================================================
+// giveAHint(roomRunNum, hintNum)
+giveAHint	0000002	0001
+giveAHint	0000002	0001
+giveAHint	0000002	0002
+giveAHint	0000002	0003
+giveAHint	0000005	0001
+giveAHint	0000015	0001
+// ===============================================================================================================
 // removeSubscription(subNumber)
 removeSubscription 000001
 removeSubscription 000002
 removeSubscription 000009
 removeSubscription 000020
+// ===============================================================================================================
+// removeSubscription(roomRunNum, equipment)
+removeEquipmentFromRoomRun 0000002	Pistol
+removeEquipmentFromRoomRun 0000004	Compass
 // ===============================================================================================================
 // getAllParticipatedRoomRunsOfMostActiveCustomer
 getAllParticipatedRoomRunsOfMostActiveCustomer
@@ -163,3 +191,6 @@ getAllSuperSeniorInstructors
 // ===============================================================================================================
 // getTheMostActiveDay
 getTheMostActiveDay
+// ===============================================================================================================
+// getAllRoomRunsWithoutHints
+getAllRoomRunsWithoutHints

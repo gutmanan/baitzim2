@@ -1,8 +1,11 @@
 package Model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 
+import utils.E_Equipment;
 import utils.E_Levels;
 
 /**
@@ -22,6 +25,8 @@ public class RoomRun {
 	private Instructor instructor;
 	private Room room;
 	private HashMap<String, Customer> participated;
+	private HashSet<E_Equipment> equipments;
+	private ArrayList<Hint> takenHints;
 
 	// -------------------------------Constructors------------------------------
 	public RoomRun(int roomRunNum, Date startDateTime, int duration, Instructor instructor, Room room) {
@@ -31,6 +36,8 @@ public class RoomRun {
 		this.setInstructor(instructor);
 		this.setDuration(duration);
 		this.participated = new HashMap<>();
+		this.equipments = new HashSet<>();
+		this.takenHints = new ArrayList<>();
 	}
 
 	public RoomRun(int roomRunNum) {
@@ -114,6 +121,14 @@ public class RoomRun {
 	public void setParticipated(HashMap<String, Customer> participated) {
 		this.participated = participated;
 	}
+	
+	public ArrayList<Hint> getTakenHints() {
+		return takenHints;
+	}
+
+	public void setTakenHints(ArrayList<Hint> takenHints) {
+		this.takenHints = takenHints;
+	}
 
 	// -------------------------------More Methods------------------------------
 	@SuppressWarnings("deprecation")
@@ -148,6 +163,39 @@ public class RoomRun {
 			participated.remove(participantToRemove.getId());
 			return true;
 		}
+		return false;
+	}
+	
+	/**
+	 * This method adds a equipment to this room rum if it's not exists already
+	 * @param equipmenyToAdd
+	 * @return true if the equipment was added successfully, false otherwise
+	 */
+	public boolean addEquipment(E_Equipment equipmenyToAdd) {
+		if (equipmenyToAdd != null && !equipments.contains(equipmenyToAdd))
+			return equipments.add(equipmenyToAdd);
+		return false;
+	}
+	
+	/**
+	 * This method removes a equipment from the room run if he exists there
+	 * @param equipmentToRemove
+	 * @return true if the equipment was deleted, false otherwise
+	 */
+	public boolean removeEquipment(E_Equipment equipmentToRemove) {
+		if (equipmentToRemove != null && equipments.contains(equipmentToRemove))
+			return equipments.remove(equipmentToRemove);
+		return false;
+	}
+	
+	/**
+	 * This method adds a hint to this room rum if it's not exists already
+	 * @param hintToAdd
+	 * @return true if the hint was added successfully, false otherwise
+	 */
+	public boolean addHint(Hint hintToAdd) {
+		if (hintToAdd != null && !takenHints.contains(hintToAdd))
+			return takenHints.add(hintToAdd);
 		return false;
 	}
 

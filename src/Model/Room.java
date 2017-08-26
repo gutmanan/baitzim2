@@ -1,6 +1,8 @@
 package Model;
 
 import utils.E_Rooms;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import utils.E_Levels;
@@ -23,6 +25,7 @@ public class Room {
 	private E_Rooms roomType;
 	private Branch branch;
 	private HashMap<Integer, RoomRun> roomRuns;
+	private ArrayList<Hint> hints;
 
 	// -------------------------------Constructors------------------------------
 	
@@ -37,6 +40,7 @@ public class Room {
 		this.roomType = roomType;
 		this.branch = branch;
 		this.roomRuns = new HashMap<>();
+		this.hints = new ArrayList<>();
 	}
 	
 	public Room(int roomNum) {
@@ -115,6 +119,14 @@ public class Room {
 	public void setRoomRuns(HashMap<Integer, RoomRun> roomRuns) {
 		this.roomRuns = roomRuns;
 	}
+	
+	public ArrayList<Hint> getHints() {
+		return hints;
+	}
+
+	public void setHints(ArrayList<Hint> hints) {
+		this.hints = hints;
+	}
 
 	// -------------------------------More Methods------------------------------
 	/**
@@ -142,6 +154,17 @@ public class Room {
 			roomRuns.remove(roomRunToDelete.getRoomRunNum());
 			return true;
 		}
+		return false;
+	}
+	
+	/**
+	 * This method adds a new hint into the roomRuns array
+	 * @param hintToAdd
+	 * @return true if the hint was added successfully, false otherwise
+	 */
+	public boolean addHint(Hint hintToAdd) {
+		if (hintToAdd != null && !hints.contains(hintToAdd))
+			return hints.add(hintToAdd);
 		return false;
 	}
 
