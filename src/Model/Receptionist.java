@@ -3,7 +3,6 @@ package Model;
 import java.time.Year;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Class Receptionist ~ represent a single Receptionist of the company,
@@ -13,7 +12,8 @@ import java.util.Map;
  * @author University Of Haifa - Israel
  */
 public class Receptionist extends Employee {
-	// -------------------------------Class Members------------------------------
+	// -------------------------------Class
+	// Members------------------------------
 	private HashMap<Integer, Subscription> Subscriptions;
 
 	// -------------------------------Constructors------------------------------
@@ -27,7 +27,8 @@ public class Receptionist extends Employee {
 		super(empNum);
 	}
 
-	// -------------------------------Getters And Setters------------------------------
+	// -------------------------------Getters And
+	// Setters------------------------------
 	public HashMap<Integer, Subscription> getSubscriptions() {
 		return Subscriptions;
 	}
@@ -35,6 +36,7 @@ public class Receptionist extends Employee {
 	public void setSubscriptions(HashMap<Integer, Subscription> subscriptions) {
 		Subscriptions = subscriptions;
 	}
+
 	// -------------------------------More Methods------------------------------
 	/**
 	 * This method adds a subscription to the subscription's array IF it does
@@ -50,8 +52,6 @@ public class Receptionist extends Employee {
 		Subscriptions.put(sub.getNumber(), sub);
 		return true;
 	}
-
-
 
 	/**
 	 * This method deletes a subscription from the subscriptions array
@@ -76,13 +76,9 @@ public class Receptionist extends Employee {
 	@SuppressWarnings("deprecation")
 	public int getNumberOfThisYearJanuaryAssignments() {
 		int numOfAssignments = 0;
-		for (Map.Entry<Integer, Subscription> e1 : Subscriptions.entrySet()) {
-			//Integer k1 = e1.getKey();
-			Subscription v1 = e1.getValue();
-			if (v1 != null && v1.getStartDate().getMonth() == 0 && v1.getStartDate().getYear() + 1900 == Year.now().getValue()) {
+		for (Subscription sub : Subscriptions.values())
+			if (sub.getStartDate().getMonth() == 0 && sub.getStartDate().getYear() + 1900 == Year.now().getValue())
 				numOfAssignments++;
-			}
-		}
 		return numOfAssignments;
 	}
 }
