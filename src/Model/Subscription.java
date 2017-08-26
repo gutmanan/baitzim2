@@ -124,7 +124,7 @@ public class Subscription {
 	 */
 	public boolean deleteRoomRun(RoomRun roomRunToDelete) {
 		if (roomRunToDelete != null && roomRuns.containsKey(roomRunToDelete.getRoomRunNum())) {
-			roomRuns.remove(roomRunToDelete).getRoomRunNum();
+			roomRuns.remove(roomRunToDelete.getRoomRunNum());
 			return true;
 		}
 		return false;
