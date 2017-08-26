@@ -99,7 +99,7 @@ public class Branch {
 	}
 
 	/**
-	 * This method removes a given instructor form the coach array.
+	 * This method removes a given instructor from the instructors array.
 	 * 
 	 * @param instructor
 	 * @return true if the instructor was removed successfully, false otherwise
@@ -129,7 +129,7 @@ public class Branch {
 	}
 
 	/**
-	 * This method removes a given receptionist form the receptionist array.
+	 * This method removes a given receptionist from the receptionist array.
 	 * 
 	 * @param recep
 	 * @return true if the receptionist was removed successfully, false
@@ -160,7 +160,7 @@ public class Branch {
 	}
 
 	/**
-	 * This method removes a given room form the rooms array.
+	 * This method removes a given room from the rooms array.
 	 * 
 	 * @param room
 	 * @return true if the room was removed successfully, false otherwise
