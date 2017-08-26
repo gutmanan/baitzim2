@@ -94,7 +94,7 @@ public class RoomRun {
 		if (instructor.getTypes().contains(this.room.getRoomType())) {
 			ableToTeach = true;
 		}
-		if (instructor.getLevel() <= this.room.getLevel().getLevel() && ableToTeach) {
+		if (instructor.getLevel() >= this.room.getLevel().getLevel() && ableToTeach) {
 			this.instructor = instructor;
 		}
 	}
@@ -129,10 +129,9 @@ public class RoomRun {
 	 * @param participantToAdd
 	 * @return true if the participant was added successfully, false otherwise
 	 */
-	public boolean addParticipant(Customer participantToAdd) {		
-		if (participantToAdd == null || participated.containsKey(participantToAdd.getId())) {
+	public boolean addParticipant(Customer participantToAdd) {
+		if (participantToAdd == null || participated.containsKey(participantToAdd.getId()) || participated.size() == room.getMaxNumOfParticipants())
 			return false;
-		}
 		participated.put(participantToAdd.getId(), participantToAdd);
 		return true;
 	}
@@ -146,13 +145,14 @@ public class RoomRun {
 	 */
 	public boolean removeParticipant(Customer participantToRemove) {
 		if (participantToRemove != null && participated.containsKey(participantToRemove.getId())) {
-			participated.remove(participantToRemove).getId();
+			participated.remove(participantToRemove.getId());
 			return true;
 		}
 		return false;
 	}
-	
-	// -------------------------------hashCode equals & toString------------------------------
+
+	// -------------------------------hashCode equals &
+	// toString------------------------------
 	@Override
 	public int hashCode() {
 		final int prime = 31;
