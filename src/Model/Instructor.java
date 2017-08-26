@@ -4,8 +4,6 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 import utils.E_Rooms;
 
@@ -17,7 +15,8 @@ import utils.E_Rooms;
  * @author University Of Haifa - Israel
  */
 public class Instructor extends Employee {
-	// -------------------------------Class Members------------------------------
+	// -------------------------------Class
+	// Members------------------------------
 	private HashSet<E_Rooms> Types;
 	private int Level;
 	private HashMap<Integer, RoomRun> roomRuns;
@@ -36,14 +35,14 @@ public class Instructor extends Employee {
 			String password, int level, Address address, E_Rooms[] types) {
 		super(empNum, firstName, lastName, birthdate, startWorkingDate, password, address);
 		this.Types = new HashSet<>(Arrays.asList(types));
-		this.Level = level;
+		setLevel(level);
 		this.roomRuns = new HashMap<>();
 	}
 
 	public Instructor(int empNum, String firstName, String lastName, Date birthdate, Date startWorkingDate,
 			String password, int level, Address address) {
 		super(empNum, firstName, lastName, birthdate, startWorkingDate, password, address);
-		this.Level = level;
+		setLevel(level);
 		this.roomRuns = new HashMap<>();
 	}
 
@@ -51,7 +50,8 @@ public class Instructor extends Employee {
 		super(empNum);
 	}
 
-	// -------------------------------Getters And Setters------------------------------
+	// -------------------------------Getters And
+	// Setters------------------------------
 	public int getLevel() {
 		return Level;
 	}
@@ -93,16 +93,8 @@ public class Instructor extends Employee {
 	public boolean addRoomRun(RoomRun roomRun) {
 		if (roomRun == null || roomRuns.containsKey(roomRun.getRoomRunNum()))
 			return false;
-		if (Types.contains(roomRun.getRoom().getRoomType())) {
-			for (Map.Entry<Integer, RoomRun> e1 : roomRuns.entrySet()) {
-				//Integer k1 = e1.getKey();
-				RoomRun v1 = e1.getValue();
-				long minutesDiff = TimeUnit.MINUTES.convert(roomRun.getStartDateTime().getTime() - v1.getStartDateTime().getTime(), TimeUnit.MILLISECONDS);
-				if (Math.abs(minutesDiff) < roomRun.getRoom().getTimeLimit()) {
-					return false;
-				}
-			}
-		} else return false;
+		if (!Types.contains(roomRun.getRoom().getRoomType()))
+			return false;
 		roomRuns.put(roomRun.getRoomRunNum(), roomRun);
 		return true;
 	}
