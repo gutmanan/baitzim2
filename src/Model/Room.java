@@ -28,7 +28,6 @@ public class Room {
 	
 	public Room(int roomNum, String name, int maxNumOfParticipants, int minNumOfParticipants, int timeLimit, E_Levels level, E_Rooms roomType,
 			Branch branch) {
-		super();
 		this.roomNum = roomNum;
 		this.name = name;
 		this.maxNumOfParticipants = maxNumOfParticipants;
